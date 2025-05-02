@@ -9,6 +9,7 @@ repository = "https://github.com/yilisharcs/{{project-name}}"
 license = "GPL-3.0"
 
 [dependencies]
+color-eyre = "0.6.3"
 crossterm = "0.29.0"
 ratatui = "0.29.0"
 
