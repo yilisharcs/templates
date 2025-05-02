@@ -23,9 +23,8 @@ opt-level = 3
 
 [profile.release]
 codegen-units = 1
-opt-level = "s"
-strip = "debuginfo"
-
-[profile.release-lto]
-inherits = "release"
 lto = true
+
+[profile.release-tiny]
+inherits = "release"
+opt-level = "s"
