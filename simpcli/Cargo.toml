@@ -1,0 +1,30 @@
+[package]
+name = "{{project-name}}"
+version = "0.1.0"
+authors = ["{{authors}}"]
+edition = "2024"
+description = "{{project-description}}"
+homepage = "https://github.com/yilisharcs/{{project-name}}"
+repository = "https://github.com/yilisharcs/{{project-name}}"
+license = "GPL-3.0"
+
+[dependencies]
+crossterm = "0.29.0"
+ratatui = "0.29.0"
+
+[profile]
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+opt-level = "s"
+strip = "debuginfo"
+
+[profile.release-lto]
+inherits = "release"
+lto = true
