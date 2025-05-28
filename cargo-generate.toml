@@ -1,7 +1,7 @@
 # configuration for https://cargo-generate.github.io/cargo-generate/
 
 [template]
-cargo_generate_version = ">=0.23.0"
+cargo_generate_version = ">=0.22.0"
 sub_templates = [
   "simpcli"
 ]
