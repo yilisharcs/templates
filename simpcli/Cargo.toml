@@ -1,12 +1,13 @@
 [package]
 name = "{{project-name}}"
 version = "0.1.0"
-authors = ["{{authors}}"]
 edition = "2024"
 description = "{{project-description}}"
-homepage = "https://github.com/yilisharcs/{{project-name}}"
 repository = "https://github.com/yilisharcs/{{project-name}}"
 license = "GPL-3.0"
+# keywords = []
+# categories = []
+# include = []
 
 [dependencies]
 color-eyre = "0.6.3"
@@ -15,16 +16,29 @@ ratatui = "0.29.0"
 
 [profile]
 
+# Enable a small amount of optimization in the dev profile.
 [profile.dev]
 opt-level = 1
 
+# Enable a large amount of optimization in the dev profile for dependencies.
 [profile.dev.package."*"]
 opt-level = 3
 
+# Enable more optimization in the release profile at the cost of compile time.
 [profile.release]
+# Compile the entire crate as one unit.
+# Slows compile times, marginal improvements.
 codegen-units = 1
-lto = true
+# Do a second optimization pass over the entire program, including dependencies.
+# Slows compile times, marginal improvements.
+lto = "thin"
 
+# Optimize for size
 [profile.release-tiny]
+# Default to release profile values.
 inherits = "release"
+# Optimize with size in mind (also try "z", sometimes it is better).
+# Slightly slows compile times, great improvements to file size and runtime performance.
 opt-level = "s"
+# Strip all debugging information from the binary to slightly reduce file size.
+strip = "debuginfo"
